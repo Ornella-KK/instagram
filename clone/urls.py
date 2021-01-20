@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+from django.urls import path
 from django.contrib import admin
 from django.contrib.auth import views
 
@@ -23,6 +24,5 @@ urlpatterns = [
     url(r'', include('instagram.urls')),
     url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^logout/$', views.logout, {"next_page": '/'}),
-    url(r'^tinymce/', include('tinymce.urls')),
-
+    path('tinymce/', include('tinymce.urls')),
 ]
