@@ -29,7 +29,7 @@ class Profile(models.Model):
     fullname = models.CharField(max_length=255,null=True)
     username = models.OneToOneField(User,on_delete=models.CASCADE,related_name='profile')
     email = models.EmailField(null=True)
-    phonenumber = models.IntegerField(null=True)
+    phonenumber = models.IntegerField(blank=True)
     gender = models.CharField(max_length=15,choices=Gender,default="Male",null=True)
 
     @receiver(post_save, sender=User)
@@ -54,7 +54,7 @@ class Post(models.Model):
     caption = models.CharField(max_length=3000)
     upload_by = models.ForeignKey(Profile,on_delete=models.CASCADE)
     likes = models.IntegerField(default=0)
-    location = models.ForeignKey(Location,on_delete=models.CASCADE)
+    location = models.ForeignKey(Location,on_delete=models.CASCADE,blank=True)
     post_date=models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
