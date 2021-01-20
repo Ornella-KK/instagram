@@ -143,11 +143,7 @@ def profile(request,id):
 
 
     return render(request, "profile.html", {"current_user":current_user,"posts":posts,"user":user,"user_object":user_object, "follows":follows, "followz":followz,"follower":follower,"following":following})
-
-    # def following(request):
-    #     if request.method == 'POST' and 'follower' in request.POST:
-    #         print("follow saved")
-
+    
 @login_required(login_url='/accounts/login/')
 def new_post(request):
     current_user = Profile.objects.get(username__id=request.user.id)
