@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 # Create your tests here.
 class LocationTestClass(TestCase):
     def setUp(self):
-        self.place = Location(location='RWanda')
+        self.place = Location(location='Rwanda')
 
     def test_instance(self):
         self.assertTrue(isinstance(self.place,Location))

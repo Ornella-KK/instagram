@@ -87,10 +87,7 @@ def search_results(request):
 def explore(request):
     posts = Post.objects.all()
     profiles= Profile.objects.all()[:3]
-    # form=CommentForm()
-    # comments=Comment.objects.all()
     return render(request,"explore.html",{"posts":posts,"profiles":profiles,})
-
 
 @login_required(login_url='/accounts/login/')
 def profile(request,id):
@@ -143,7 +140,7 @@ def profile(request,id):
 
 
     return render(request, "profile.html", {"current_user":current_user,"posts":posts,"user":user,"user_object":user_object, "follows":follows, "followz":followz,"follower":follower,"following":following})
-    
+
 @login_required(login_url='/accounts/login/')
 def new_post(request):
     current_user = Profile.objects.get(username__id=request.user.id)
@@ -159,8 +156,6 @@ def new_post(request):
         form = NewPostForm()
     return render(request, 'post.html', {"form": form})
 
-
-
 @login_required(login_url='/accounts/login/')
 def edit_profile(request):
     current_user=request.user
@@ -174,6 +169,5 @@ def edit_profile(request):
     else:
         form=ProfileForm(instance=request.user.profile)
         print('error')
-
 
     return render(request,'edit_profile.html',locals())
